@@ -1,0 +1,56 @@
+print("Checking Until Player load")
+
+repeat wait() until game:IsLoaded()
+
+if not game:IsLoaded() then
+game.Loaded:Wait()
+
+elseif game:IsLoaded() then
+
+local gmaae = workspace
+
+for  i, v in pairs(gmaae:GetChildren()) do
+if v.Name == "_waves_started" then
+
+game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("vote_start"):InvokeServer()
+
+local votestart = game:GetService("Players").LocalPlayer.PlayerGui.VoteStart.Enabled
+
+repeat wait() until votestart == false
+
+print("votestart = true")
+
+wait(0.5)
+
+local wavenum = workspace._wave_num.Value
+
+repeat wait() until wavenum >= 2
+
+print("wavenum = true")
+
+wait(0.5)
+
+ local args = {
+    [1] = "{34bdbfd0-3415-4488-af7c-0d0e4e53d8a7}",
+    [2] = CFrame.new(-2950.19238, 94.4185944, -714.84613, -1, 0, -0, 0, 1, -0, 0, -0, -1)
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("spawn_unit"):InvokeServer(unpack(args))
+
+print("placeunit = true")
+
+local checkend = workspace._DATA.GameFinished.Value
+    
+repeat wait() until checkend == true
+
+print("replay = true")
+
+local args = {
+    [1] = "replay"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("set_game_finished_vote"):InvokeServer(unpack(args))
+    
+end
+end
+end
