@@ -43,7 +43,7 @@ game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("cli
 wait(10)
 
 local args = {
-    [1] = "_lobbytemplategreen1"
+    [1] = "_lobbytemplategreen2"
 }
 
 game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_join_lobby"):InvokeServer(unpack(args))
@@ -68,7 +68,7 @@ local args = {
 game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_start_game"):InvokeServer(unpack(args))
 
 local args = {
-    [1] = "_lobbytemplategreen2"
+    [1] = "_lobbytemplategreen3"
 }
 
 game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_join_lobby"):InvokeServer(unpack(args))
